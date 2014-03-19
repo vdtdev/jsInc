@@ -16,10 +16,15 @@ Rather than having numerous script tags in your header, you can reduce the numbe
     <script type="text/javascript" src="loader.js"></script>
     </head>
     ...
-    </html>```
+    </html>
+```    
   
 *loader.js*
-```jsInc.load(['jquery.js','swfobject.js','libs/helper.js']).preload();
-   cssInc.load(['globals.css','ui.css']).preload();```
+```
+    // load some javascript files...
+    jsInc.load(['jquery.js','swfobject.js','libs/helper.js']).preload();
+    // load a global stylesheet and a helper
+   cssInc.load(['globals.css','ui.css']).preload();
+```
    
 For more details, look at the documentation within jsInc.js
