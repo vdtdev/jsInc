@@ -1,0 +1,14 @@
+/*
+Sample CSS document
+*/
+
+
+.fancy{
+    outline-color: yellow;
+    outline-width:3px;
+    
+    animation-timing-function: cubic-bezier(0.2,1.0,0.8,0.3);
+    animation-delay: 2ms;
+    animation-iteration-count: infinite;
+    animation-name: spin;
+}

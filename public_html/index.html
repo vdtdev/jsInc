@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Sample usage of jsInc and cssInc</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style type="text/css">
+            i.b{font-weight:bold;}
+        </style>
+        <script type="text/javascript" src="jsinc.js"></script>
+        <script type="text/javascript">
+            // sample inclusion of a stylesheet then a javascript file
+
+            cssInc.load(["sample_includes/fancy.css"]).preload();
+            jsInc.load(["sample_includes/sample.js"]).preload();
+
+            // load a stylesheet chosen from selection box      
+            function themeswitch(btn) {
+                var f = document.getElementById('switcher').value;
+                switch (f) {
+                    case "1":
+                        cssInc.load(['sample_includes/theme1.css']).preload();
+                        btn.style.visibility = "hidden";
+                        break;
+                    case "2":
+                        cssInc.load(['sample_includes/theme2.css']).preload();
+                        btn.style.visibility = "hidden";
+                        break;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Example use of jsInc and cssInc</h2>
+        <select id="switcher">
+            <option selected="selected" value="-1">Default<option>
+            <option value="1">Theme 1</option>
+            <option value="2">Theme 2</option>
+        </select>
+        <button onclick="themeswitch(this);">Set Theme</button>
+        <div onmouseover="addARedBox(this);" id="generic-container" style="width:400px;height:400px;border:1px solid silver">
+
+        </div>
+        <hr/>
+        <div>
+            Code used:<br>
+            <i class="b">index.html head</i>
+
+            <pre>
+        &lt;head&gt;
+        &lt;script type="text/javascript" src="jsinc.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
+            // sample inclusion of a stylesheet then a javascript file
+
+            cssInc.load(["sample_includes/fancy.css"]).preload();
+            jsInc.load(["sample_includes/sample.js"]).preload();
+
+            // load a stylesheet chosen from selection box      
+            function themeswitch(btn) {
+                var f = document.getElementById('switcher').value;
+                switch (f) {
+                    case "1":
+                        cssInc.load(['sample_includes/theme1.css']).preload();
+                        btn.style.visibility = "hidden";
+                        break;
+                    case "2":
+                        cssInc.load(['sample_includes/theme2.css']).preload();
+                        btn.style.visibility = "hidden";
+                        break;
+                }
+            }
+        &lt;/script&gt;
+            </pre>
+            <i class="b">sample.js</i>
+            <pre>
+            /**
+            * Creates a 128x128 pixel red box inside the element passed as the parent parameter
+            * @param {type} parent a valid DOM container element
+            * @returns {void}
+            */
+           function addARedBox(parent){
+               var box = document.createElement("div");
+               box.style.width="128px";
+               box.style.height="128px";
+               box.style.backgroundColor="red";
+               box.style.border="2px solid black";
+               box.className="fancy";
+               parent.appendChild(box);
+               parent.onmouseover=null;
+           }
+            </pre>
+        </div>
+        <br/>
+        <hr/>
+        <div>
+            <b>Usage: jsInc</b>
+            <br>
+            <pre>
+    jsInc.load(<array of javascript urls>).preload();
+            </pre>
+            <i>Example:</i>
+            <pre>
+    jsInc.load(['jquery.js','swfobject.js']).preload();
+            </pre>
+            <hr/>
+            <b>Usage: cssInc</b>
+            <br>
+            <pre>
+    cssInc.load(<array of css urls>).preload();
+            </pre>
+            <i>Example:</i>
+            <pre>
+    cssInc.load(['global.css','specific.css']).preload();
+            </pre>
+        </div>
+        <hr/>
+        <i>March 19, 2014. Wade Harkins &lt;<a href="mailto:vdtdev@gmail.com?subject=jsinc">vdtdev@gmail.com</a>&gt;</i>
+    </body>
+</html>
